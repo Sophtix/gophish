@@ -1,6 +1,8 @@
 # Minify client side assets (JavaScript)
 FROM node:latest AS build-js
 
+LABEL org.opencontainers.image.source=https://github.com/sophtix/gophish
+
 RUN npm install gulp gulp-cli -g
 
 WORKDIR /build
@@ -10,7 +12,7 @@ RUN gulp
 
 
 # Build Golang binary
-FROM golang:1.15.2 AS build-golang
+FROM golang:1.22 AS build-golang
 
 WORKDIR /go/src/github.com/gophish/gophish
 COPY . .
