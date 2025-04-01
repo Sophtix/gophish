@@ -286,7 +286,7 @@ func (ps *PhishingServer) PhishHandler(w http.ResponseWriter, r *http.Request) {
 		// d contains a Payload member of type net.url.Values
 		// which itself is just map[string][]string
 		// Manually overwrite it with basic auth data
-		payload := map[string][]string{"Username": []string{username}, "Password": []string{password}}
+		payload := map[string][]string{"Username": {username}, "Password": {password}}
 		d.Payload = payload
 		err = rs.HandleFormSubmit(d)
 		if err != nil {
